@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <h1>Create MeetUps Page</h1>
   </div>
 </template>
