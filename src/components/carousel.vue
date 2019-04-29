@@ -1,14 +1,39 @@
 
   <template>
-  <v-carousel>
-    <v-carousel-item
-      v-for="(item,i) in items"
-      :key="i"
-      :src="item.src"
-      reverse-transition="fade"
-      transition="fade"
-    ></v-carousel-item>
-  </v-carousel>
+  <div>
+    <v-layout row wrap>
+      <v-carousel>
+        <v-carousel-item
+          v-for="meetup in meetups"
+          :key="meetup.id"
+          :src="meetup.src"
+          reverse-transition="fade"
+          transition="fade"
+        >
+          <div class="title s12">
+            <v-container class="text-center">
+              {{meetup.title}}
+              <v-layout row wrap>
+                <v-flex xs12 sm6 class="text-xs-center text-sm-right">
+                  <v-btn large router to="/meetups" class="primary">Explore Meetups</v-btn>
+                </v-flex>
+                <v-flex xs12 sm6 class="text-xs-center text-sm-left">
+                  <v-btn large router to="/createMeetUps" class="primary">Organize Meetup</v-btn>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </div>
+        </v-carousel-item>
+      </v-carousel>
+    </v-layout>
+    <v-layout row wrap class="mt-2">
+      <v-container>
+        <v-flex xs12 class="text-xs-center">
+          <p>Join our awesome Meetups today!</p>
+        </v-flex>
+      </v-container>
+    </v-layout>
+  </div>
 </template>
 
   
@@ -17,18 +42,28 @@
 export default {
   data() {
     return {
-      items: [
+      meetups: [
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg"
+          id: "001",
+          title: "MeetUp in Kiev",
+          src:
+            "https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1455214872/0-kiev0316.jpg?itok=6FUntx2l"
         },
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg"
+          id: "002",
+          title: "MeetUp in Ternopil",
+          src: "https://rada.te.ua/app/webroot/files/DJI-0006-218000.jpg"
         },
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg"
+          id: "003",
+          title: "MeetUp in Odesa",
+          src:
+            "https://lonelyplanetimages.imgix.net/a/g/hi/t/0e8883342c4c387204eb7fe94f836a02-odesa.jpg?sharp=10&vib=20&w=1200"
         },
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg"
+          id: "004",
+          title: "MeetUp in Lviv",
+          src: "http://k6s3v6r4.ssl.hwcdn.net/pictures/813/813416.jpg"
         }
       ]
     };
@@ -51,5 +86,15 @@ export default {
       opacity: 0;
     }
   }
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
 }
 </style>
