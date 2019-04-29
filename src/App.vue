@@ -41,7 +41,7 @@ export default {
         },
         {
           icon: "room",
-          link: "/createMeetUps",
+          link: "/meetUp/new",
           title: "Organize MeetUps"
         },
         {

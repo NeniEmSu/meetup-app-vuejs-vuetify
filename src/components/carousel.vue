@@ -4,11 +4,13 @@
     <v-layout row wrap>
       <v-carousel>
         <v-carousel-item
+          style="cursor: pointer;"
           v-for="meetup in meetups"
           :key="meetup.id"
           :src="meetup.src"
           reverse-transition="fade"
           transition="fade"
+          @click="onLoadMeetup(meetup.id)"
         >
           <div class="title s12">
             <v-container class="text-center">
@@ -73,10 +75,15 @@ export default {
         {
           id: "004",
           title: "MeetUp in Lviv",
-          src: "http://k6s3v6r4.ssl.hwcdn.net/pictures/813/813416.jpg"
+          src: "https://magazine.startus.cc/wp-content/uploads/2015/06/lviv.jpg"
         }
       ]
     };
+  },
+  methods: {
+    onLoadMeetup(id) {
+      this.$router.push("/meetups/" + id);
+    }
   }
 };
 </script>
