@@ -13,8 +13,10 @@
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
-
-    <v-navigation-drawer class="v-navigation-drawer--fixed" v-model="sideNav">
+    <v-navigation-drawer
+      class="v-navigation-drawer--fixed v-navigation-drawer--clipped v-navigation-drawer--is-mobile v-navigation-drawer--open theme--light"
+      v-model="sideNav"
+    >
       <v-list-tile v-for="item in menuItems" :key="item.title" router :to="item.link">
         <v-list-tile-action>
           <v-icon>{{item.icon}}</v-icon>
@@ -50,7 +52,7 @@ export default {
           title: "profile"
         },
         {
-          icon: "face",
+          icon: "fingerprint",
           link: "/signUp",
           title: "SignUp"
         },

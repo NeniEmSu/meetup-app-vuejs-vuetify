@@ -9,11 +9,13 @@
             <div>
               <div class="headline">{{meetup.title}}</div>
               <span class="grey--text">{{meetup.montra}}</span>
+              <br>
+              <span class="grey--text">{{meetup.date}}</span>
             </div>
           </v-card-title>
 
           <v-card-actions>
-            <v-btn flat color="primary" router :to="meetup.link">Explore</v-btn>
+            <v-btn flat color="primary" router :to="'/meetups/' + meetup.id">Explore</v-btn>
             <v-spacer></v-spacer>
             <v-btn title="View Details" icon @click="show = !show">
               <v-icon>{{ show ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</v-icon>
@@ -32,47 +34,17 @@
 <script>
 export default {
   data: () => ({
-    show: false,
-    meetups: [
-      {
-        id: "001",
-        title: "MeetUp in Kiev",
-        details:
-          "I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.",
-        montra: "Misto Bahato Fine Odne",
-        link: "/meetups/001",
-        src:
-          "https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1455214872/0-kiev0316.jpg?itok=6FUntx2l"
-      },
-      {
-        id: "002",
-        title: "MeetUp in Ternopil",
-        details:
-          "I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.",
-        montra: "Misto Bahato Fine Odne",
-        link: "/meetups/002",
-        src: "https://rada.te.ua/app/webroot/files/DJI-0006-218000.jpg"
-      },
-      {
-        id: "003",
-        title: "MeetUp in Odesa",
-        details:
-          "I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.",
-        montra: "Misto Bahato Fine Odne",
-        link: "/meetups/003",
-        src:
-          "https://lonelyplanetimages.imgix.net/a/g/hi/t/0e8883342c4c387204eb7fe94f836a02-odesa.jpg?sharp=10&vib=20&w=1200"
-      },
-      {
-        id: "004",
-        title: "MeetUp in Lviv",
-        details:
-          "I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.",
-        montra: "Misto Bahato Fine Odne",
-        link: "/meetups/004",
-        src: "http://k6s3v6r4.ssl.hwcdn.net/pictures/813/813416.jpg"
-      }
-    ]
-  })
+    show: false
+  }),
+  computed: {
+    meetups() {
+      return this.$store.getters.loadedMeetups;
+    }
+  },
+  methods: {
+    onLoadMeetup(id) {
+      this.$router.push("/meetups/" + id);
+    }
+  }
 };
 </script>
