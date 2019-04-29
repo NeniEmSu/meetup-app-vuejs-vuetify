@@ -14,7 +14,6 @@
             <div class="info--text">29th April 2019 - Where it takes Place.</div>
             <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, facilis? Hic reprehenderit sapiente in placeat odio quisquam autem a distinctio.</div>
           </v-card-text>
-
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn class="primary">Register</v-btn>
